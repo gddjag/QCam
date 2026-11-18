@@ -402,7 +402,7 @@ html:lang(en) .section-title,html:lang(en) .extra-title{letter-spacing:-.05em}
   gap: 8px;
   margin-top: clamp(16px, 2.6vh, 30px);
 }
-.download-choices button:disabled {
+.download-choices :is(a, button:disabled) {
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -420,10 +420,18 @@ html:lang(en) .section-title,html:lang(en) .extra-title{letter-spacing:-.05em}
   font-size: 15px;
   line-height: 1.35;
   text-align: left;
-  cursor: not-allowed;
   opacity: 1;
   -webkit-text-fill-color: currentColor;
 }
+.download-choices button:disabled { cursor: not-allowed; }
+.download-choices a {
+  border-color: #414839;
+  background: #414839;
+  color: #fff;
+  text-decoration: none;
+}
+.download-choices a:hover { background: #30362b; }
+.download-choices a:focus-visible { outline: 2px solid #414839; outline-offset: 3px; }
 .download-glyph {
   position: relative;
   display: block;
@@ -457,7 +465,7 @@ html:lang(en) .section-title,html:lang(en) .extra-title{letter-spacing:-.05em}
   .download-intro p { margin-top: 6px; }
   .download-platform { padding-top: 12px; }
   .download-choices { margin-top: 12px; gap: 5px; }
-  .download-choices button:disabled { min-height: 39px; padding-block: 7px; }
+  .download-choices :is(a, button:disabled) { min-height: 39px; padding-block: 7px; }
 }
 @media (max-width: 720px) {
   .download-layout { gap: 24px; }
@@ -467,11 +475,11 @@ html:lang(en) .section-title,html:lang(en) .extra-title{letter-spacing:-.05em}
   .download-platform { padding-top: 12px; }
   .download-platform h3 { margin-bottom: 4px; font-size: 25px; }
   .download-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 10px; gap: 6px; }
-  .download-choices button:disabled { min-height: 44px; padding: 9px 10px; gap: 5px; font-size: 13px; }
+  .download-choices :is(a, button:disabled) { min-height: 44px; padding: 9px 10px; gap: 5px; font-size: 13px; }
   .download-glyph { width: 12px; height: 14px; }
 }
 @media (max-width: 360px) {
-  .download-choices button:disabled { font-size: 12px; padding-inline: 7px; }
+  .download-choices :is(a, button:disabled) { font-size: 12px; padding-inline: 7px; }
 }
 
 .wire-platform-icon{display:block;flex:none;width:clamp(34px,3.2vw,52px);height:auto;aspect-ratio:1;object-fit:contain;border-radius:23%}
@@ -621,7 +629,7 @@ html:has(.viewer[open]) { overflow: hidden }
       <div class="wrap hero-layout">
         <div class="hero-copy">
           <h1 id="hero-title">一镜多视界<span class="break">自由更出彩</span></h1>
-          <p class="hero-description">轻映 QCam 是一款<strong>永久免费</strong>的多路虚拟相机，支持 Windows 和 macOS。一个摄像头最多可配置 10 路画面，每路都能独立裁剪、调色和切换横竖屏。</p>
+          <p class="hero-description">轻映 QCam 是一款<strong>永久免费</strong>的多路虚拟相机，支持 Windows。一个摄像头最多可配置 10 路画面，每路都能独立裁剪、调色和切换横竖屏。</p>
           <div class="hero-actions">
             <a href="#platforms" class="cta">了解多平台开播 <svg class="ico" aria-hidden="true"><use href="#i-next"/></svg></a>
             <a href="#demos" class="text-link">观看操作演示 <svg class="ico" aria-hidden="true"><use href="#i-chevron"/></svg></a>
@@ -662,7 +670,7 @@ html:has(.viewer[open]) { overflow: hidden }
   <div class="wrap platforms-layout">
     <div class="platform-heading">
       <h2 id="platform-title" class="extra-title">多平台开播</h2>
-      <p>用现有的 Windows 电脑或 Mac，加上一台摄像头，就能 0 元搭好多平台直播。启用系统输出后，一个镜头最多分出 <strong>10 路虚拟摄像头</strong>，各开播工具各选一路，无需另购多开采集卡或安装 OBS。</p>
+      <p>用现有的 Windows 电脑，加上一台摄像头，就能 0 元搭好多平台直播。启用系统输出后，一个镜头最多分出 <strong>10 路虚拟摄像头</strong>，各开播工具各选一路，无需另购多开采集卡或安装 OBS。</p>
     </div>
     <figure class="wireboard" aria-label="摄像头经 QCam 分到三个示例开播通道">
       <svg class="wireboard-lines" viewBox="0 0 1000 300" preserveAspectRatio="none" fill="none" aria-hidden="true">
@@ -738,7 +746,7 @@ html:has(.viewer[open]) { overflow: hidden }
     <div class="faq-list">
       <details name="qcam-faq" open>
         <summary>QCam 收费吗？0 元搭建需要什么？</summary>
-        <p>QCam 永久免费。已有 Windows 电脑或 Mac、可用摄像头和网络，就可以用 QCam 把一路画面分给多个直播间。无需另装 OBS，也无需为每路添置采集卡。电脑、摄像头、网络和平台服务本身的费用另计。</p>
+        <p>QCam 永久免费。已有 Windows 电脑、可用摄像头和网络，就可以用 QCam 把一路画面分给多个直播间。无需另装 OBS，也无需为每路添置采集卡。电脑、摄像头、网络和平台服务本身的费用另计。</p>
       </details>
       <details name="qcam-faq">
         <summary>怎样把画面接入直播平台？</summary>
@@ -750,7 +758,7 @@ html:has(.viewer[open]) { overflow: hidden }
       </details>
       <details name="qcam-faq">
         <summary>怎样在电脑上启用虚拟摄像头？</summary>
-        <p>在 QCam 中打开「设置」→「视频输出」。Windows 用户点击「安装虚拟摄像头组件」。Mac 用户需使用内含摄像头扩展的安装包，点击「激活摄像头扩展」，再按 macOS 提示批准。完成后即可在同一工作台开启所需通道。</p>
+        <p>在 Windows 版 QCam 中打开「设置」→「视频输出」，点击「安装虚拟摄像头组件」。安装后，在工作台开启所需通道。</p>
       </details>
 
       <details name="qcam-faq">
@@ -772,7 +780,7 @@ html:has(.viewer[open]) { overflow: hidden }
   <div class="wrap download-layout">
     <div class="download-intro">
       <h2 id="download-title">下载 QCam</h2>
-      <p>下载暂未开放。</p>
+      <p>Windows 版 1.0.0 · 免费下载</p>
     </div>
     <div class="download-platforms">
       <div class="download-platform">
@@ -780,10 +788,10 @@ html:has(.viewer[open]) { overflow: hidden }
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h9v9H2zm11 0h9v9h-9zM2 14h9v9H2zm11 0h9v9h-9z"/></svg>
           Windows
         </h3>
-        <p>在系统设置的「系统信息」中查看设备的系统类型。</p>
+        <p>x64 面向 Windows 10（1809 起）和 Windows 11。ARM64 提供预览版，直播采集待实机验证。</p>
         <div class="download-choices">
-          <button type="button" disabled aria-label="Windows x64，下载暂未开放">Windows x64<span class="download-glyph" aria-hidden="true"></span></button>
-          <button type="button" disabled aria-label="Windows ARM64，下载暂未开放">Windows ARM64<span class="download-glyph" aria-hidden="true"></span></button>
+          <a href="https://github.com/gddjag/QCam/releases/download/v1.0.0/QCam-Windows-x64-1.0.0-Setup.exe">Windows x64<span class="download-glyph" aria-hidden="true"></span></a>
+          <a href="https://github.com/gddjag/QCam/releases/download/v1.0.0/QCam-Windows-arm64-1.0.0-Setup.exe">Windows ARM64 预览<span class="download-glyph" aria-hidden="true"></span></a>
         </div>
       </div>
       <div class="download-platform">
@@ -791,10 +799,10 @@ html:has(.viewer[open]) { overflow: hidden }
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17.1 5.2c.9-1.1 1.6-2.6 1.4-4.2-1.3.1-2.9.9-3.8 2-.8.9-1.6 2.5-1.4 4 1.5.1 2.9-.7 3.8-1.8ZM20.6 17c-.4 1-1 2.2-1.8 3.4-1 1.4-2 2.8-3.7 2.8-1.5 0-2-.9-3.8-.9-1.7 0-2.3.9-3.8.9-1.6.1-2.8-1.5-3.8-3C1.6 17.1.1 11.4 2.3 7.7c1-1.8 2.9-2.9 5-2.9 1.6 0 3.1 1 4 1s2.8-1.2 4.6-1c.8 0 3.1.3 4.6 2.5-.1.1-2.7 1.6-2.7 4.7 0 3.7 3.2 4.9 3.3 5h-.5Z" transform="translate(1 0) scale(.96)"/></svg>
           macOS
         </h3>
-        <p>从苹果菜单打开「关于本机」，查看芯片或处理器类型。</p>
+        <p>macOS 版暂停发布。</p>
         <div class="download-choices">
-          <button type="button" disabled aria-label="macOS Apple 芯片，M 系列，下载暂未开放">Apple 芯片（M 系列）<span class="download-glyph" aria-hidden="true"></span></button>
-          <button type="button" disabled aria-label="macOS Intel 芯片，下载暂未开放">Intel 芯片<span class="download-glyph" aria-hidden="true"></span></button>
+          <button type="button" disabled aria-label="macOS Apple 芯片，M 系列，暂停发布">Apple 芯片（M 系列）<span class="download-glyph" aria-hidden="true"></span></button>
+          <button type="button" disabled aria-label="macOS Intel 芯片，暂停发布">Intel 芯片<span class="download-glyph" aria-hidden="true"></span></button>
         </div>
       </div>
     </div>
@@ -816,7 +824,7 @@ html:has(.viewer[open]) { overflow: hidden }
   </dialog>
   <script>
     const english = {
-  "轻映 QCam，永久免费的多路虚拟相机。一个摄像头，多种构图；了解多平台开播、真实工作台教程和平台版本。": "QCam is a free multi-output virtual camera. Explore multi-platform streaming, real workbench tutorials, and the Windows and macOS editions.",
+  "轻映 QCam，永久免费的多路虚拟相机。一个摄像头，多种构图；了解多平台开播、真实工作台教程和平台版本。": "QCam is a free multi-output virtual camera. Explore multi-platform streaming, real workbench tutorials, and platform availability.",
   "轻映 QCam · 多路虚拟相机": "QCam · Multi-output virtual camera",
   "跳到主要内容": "Skip to content",
   "轻映 QCam · 多路虚拟相机，回到首页": "QCam multi-output virtual camera home",
@@ -834,7 +842,7 @@ html:has(.viewer[open]) { overflow: hidden }
   "自由更出彩": "Freedom to create.",
   "轻映 QCam 是一款": "QCam is ",
   "永久免费": "free forever",
-  "的多路虚拟相机，支持 Windows 和 macOS。一个摄像头最多可配置 10 路画面，每路都能独立裁剪、调色和切换横竖屏。": ". Use the same workbench on Windows and macOS to turn one camera feed into up to 10 channels. Crop, color-correct, and choose landscape or portrait for each one.",
+  "的多路虚拟相机，支持 Windows。一个摄像头最多可配置 10 路画面，每路都能独立裁剪、调色和切换横竖屏。": ". Use QCam on Windows to turn one camera feed into up to 10 channels. Crop, color-correct, and choose landscape or portrait for each one.",
   "了解多平台开播": "Explore streaming",
   "观看操作演示": "Watch demos",
   "查看轻映 QCam 工作台和图文教程": "See the QCam workbench and quick-start guide",
@@ -857,7 +865,7 @@ html:has(.viewer[open]) { overflow: hidden }
   "竖屏特写": "Vertical close-up",
   "同一帧直播样图，两种通道画幅。": "One frame, two channel formats.",
   "多平台开播": "Stream to multiple platforms",
-  "用现有的 Windows 电脑或 Mac，加上一台摄像头，就能 0 元搭好多平台直播。启用系统输出后，一个镜头最多分出": "Set up on your Windows PC or Mac with the webcam you already own. Enable system output to split one feed across up to ",
+  "用现有的 Windows 电脑，加上一台摄像头，就能 0 元搭好多平台直播。启用系统输出后，一个镜头最多分出": "Set up on your Windows PC with the webcam you already own. Enable system output to split one feed across up to ",
   "10 路虚拟摄像头": "10 virtual cameras",
   "，各开播工具各选一路，无需另购多开采集卡或安装 OBS。": ". Select one per streaming app. You won’t need OBS or a separate capture card for each channel.",
   "摄像头经 QCam 分到三个示例开播通道": "QCam routes one camera to three example streaming channels",
@@ -896,13 +904,13 @@ html:has(.viewer[open]) { overflow: hidden }
   "QCam 工作台操作录像：添加通道": "QCam workbench recording showing how to add a channel",
   "工作台实录 · 添加通道": "Workbench recording · Add a channel",
   "QCam 收费吗？0 元搭建需要什么？": "Is QCam free? What equipment do I need?",
-  "QCam 永久免费。已有 Windows 电脑或 Mac、可用摄像头和网络，就可以用 QCam 把一路画面分给多个直播间。无需另装 OBS，也无需为每路添置采集卡。电脑、摄像头、网络和平台服务本身的费用另计。": "QCam is free forever. If you already have a Windows PC or Mac, a webcam, and a network connection, you can send one camera feed to several streaming apps. You won’t need OBS or extra capture cards. Hardware, internet access, and platform fees are separate.",
+  "QCam 永久免费。已有 Windows 电脑、可用摄像头和网络，就可以用 QCam 把一路画面分给多个直播间。无需另装 OBS，也无需为每路添置采集卡。电脑、摄像头、网络和平台服务本身的费用另计。": "QCam is free forever. If you already have a Windows PC, a webcam, and a network connection, you can send one camera feed to several streaming apps. You won’t need OBS or extra capture cards. Hardware, internet access, and platform fees are separate.",
   "怎样把画面接入直播平台？": "How do I connect QCam to a streaming platform?",
   "启用 QCam 的系统虚拟摄像头组件，调好画幅并开启目标通道。打开平台的桌面开播工具，添加摄像头并选择对应设备，例如「QCam 01」。直播期间保持 QCam 和这一路通道开启。": "Enable QCam’s virtual camera component. Set the frame format and turn on the channel. In the platform’s desktop streaming app, add a camera and select the matching device, for example “QCam 01”. Keep QCam running and that channel on while you stream.",
   "每个直播间的麦克风怎么选？": "Which microphone should I use in each stream?",
   "QCam 的虚拟摄像头传送视频。在各平台的桌面开播工具里，分别选择要使用的实体麦克风或声卡。QCam 的音频检测可用来查看输入电平。": "QCam’s virtual cameras carry video. Choose your microphone or audio interface in each platform’s streaming app. Use QCam’s audio meter to check the input level.",
   "怎样在电脑上启用虚拟摄像头？": "How do I enable virtual camera output on my computer?",
-  "在 QCam 中打开「设置」→「视频输出」。Windows 用户点击「安装虚拟摄像头组件」。Mac 用户需使用内含摄像头扩展的安装包，点击「激活摄像头扩展」，再按 macOS 提示批准。完成后即可在同一工作台开启所需通道。": "In QCam, open Settings → Video output. On Windows, select Install virtual camera component. On a Mac, use a package that includes the camera extension, select Activate camera extension, and approve it when macOS asks. Then turn on the channels you need in the workbench.",
+  "在 Windows 版 QCam 中打开「设置」→「视频输出」，点击「安装虚拟摄像头组件」。安装后，在工作台开启所需通道。": "In QCam for Windows, open Settings → Video output and select Install virtual camera component. After installation, turn on the channels you need in the workbench.",
   "直播伴侣里没有画面，怎么排查？": "My streaming app shows no picture. What should I check?",
   "打开「设置」→「常规」里的「测试画面」。确认通道保留了「主摄像头」素材并已开启输出，再在直播伴侣选中相应设备。看到测试色条后点「退出测试」，检查实体摄像头的连接与权限。": "In Settings → General, turn on Test pattern (测试画面). Check that the channel includes the Main camera (主摄像头) source and that its output is on. Select the matching device in your streaming app. Once you see color bars, exit the test (退出测试) and check the webcam’s connection and permissions.",
   "切到竖屏后，为什么还显示横屏？": "Why is the picture still wide after switching to portrait?",
@@ -910,14 +918,13 @@ html:has(.viewer[open]) { overflow: hidden }
   "手机推流中断，怎样恢复？": "How do I reconnect a phone stream?",
   "在 SRT 监听模式下，QCam 会重新等待推流。先确认手机和电脑所在的局域网可以互访，再从手机重新推流。改过地址或端口时，在「网络视频源」中点「应用并重新连接」。点「切回摄像头」可恢复实体设备输入。": "In SRT listener mode, QCam waits for the stream to return. Make sure the phone and computer can reach each other on the same local network, then restart the stream on the phone. If the address or port changed, open Network video source (网络视频源) and select Apply and reconnect (应用并重新连接). Select Switch to camera (切回摄像头) to return to the webcam.",
   "下载 QCam": "Download QCam",
-  "下载暂未开放。": "Downloads are not available yet.",
-  "在系统设置的「系统信息」中查看设备的系统类型。": "Check System Information in Windows Settings to find your system type.",
-  "Windows x64，下载暂未开放": "Windows x64 download is not available yet",
-  "Windows ARM64，下载暂未开放": "Windows ARM64 download is not available yet",
-  "从苹果菜单打开「关于本机」，查看芯片或处理器类型。": "Choose About This Mac from the Apple menu to check your chip or processor.",
-  "macOS Apple 芯片，M 系列，下载暂未开放": "macOS for Apple silicon (M series), download not available yet",
+  "Windows 版 1.0.0 · 免费下载": "Windows 1.0.0 · Free download",
+  "x64 面向 Windows 10（1809 起）和 Windows 11。ARM64 提供预览版，直播采集待实机验证。": "The x64 build targets Windows 10 (1809 and later) and Windows 11. The ARM64 preview still needs live capture testing on Windows hardware.",
+  "Windows ARM64 预览": "Windows ARM64 Preview",
+  "macOS 版暂停发布。": "The macOS release is on hold.",
+  "macOS Apple 芯片，M 系列，暂停发布": "macOS for Apple silicon (M series), release on hold",
   "Apple 芯片（M 系列）": "Apple silicon (M series)",
-  "macOS Intel 芯片，下载暂未开放": "macOS for Intel, download not available yet",
+  "macOS Intel 芯片，暂停发布": "macOS for Intel, release on hold",
   "Intel 芯片": "Intel",
   "软件截图": "Software screenshot",
   "关闭": "Close",
