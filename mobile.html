@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>QCam</title>
+  <script>
+    const url = new URL('./index.html', location.href);
+    url.search = location.search;
+    const section = url.searchParams.get('preview');
+    url.hash = location.hash || (['overview','features','platforms','guide','demos','faq','download'].includes(section) ? section : '');
+    url.searchParams.delete('preview');
+    location.replace(url.href);
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=./index.html"></noscript>
+</head>
+<body><a href="./index.html">QCam</a></body>
+</html>

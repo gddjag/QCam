@@ -1,0 +1,15 @@
+*
+!.gitignore
+!.nojekyll
+!index.html
+!mobile.html
+!assets/
+assets/*
+!assets/guide-*.png
+!assets/guide-*.mp4
+!assets/qcam-brand.png
+!assets/qcam-icon.png
+!assets/live-studio.jpg
+!assets/platforms/
+assets/platforms/*
+!assets/platforms/*.webp
