@@ -397,6 +397,20 @@ html:lang(en) .section-title,html:lang(en) .extra-title{letter-spacing:-.05em}
   height: .82em;
   fill: currentColor;
 }
+.download-help{margin-top:18px;color:#60615e;font-size:13px;line-height:1.65}
+.download-help .download-notice{display:flex;align-items:baseline;gap:9px;font-size:13px}
+.download-notice>span{display:inline-grid;place-items:center;flex:none;align-self:center;width:17px;height:17px;border:1px solid #727a70;border-radius:50%;font-family:Georgia,serif;font-size:12px}
+.download-help details{margin-top:13px;border-top:1px solid #cbccc8}
+.download-help summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:10px 0;cursor:pointer;list-style:none;color:#303b2c}
+.download-help summary::-webkit-details-marker{display:none}
+.download-help summary::after{content:'+';font-size:20px;line-height:1}
+.download-help details[open] summary::after{content:'−'}
+.download-help-content>p{font-size:13px;margin:0 0 12px}
+.download-help-content>a{display:inline-flex;align-items:center;min-height:44px;color:#405b2f;text-decoration:underline;text-underline-offset:4px}
+.download-checksums{margin:0 0 14px;min-width:0}
+.download-checksums dt{margin-top:9px;font-size:12px;font-weight:600}
+.download-checksums dd{margin:3px 0 0}
+.download-checksums code{font-size:11px;overflow-wrap:anywhere;user-select:all;line-height:1.6}
 .download-choices {
   display: grid;
   gap: 8px;
@@ -788,21 +802,42 @@ html:has(.viewer[open]) { overflow: hidden }
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h9v9H2zm11 0h9v9h-9zM2 14h9v9H2zm11 0h9v9h-9z"/></svg>
           Windows
         </h3>
-        <p>x64 面向 Windows 10（1809 起）和 Windows 11。ARM64 提供原生安装包，Windows 10／11 安装和直播采集待实机验证。</p>
+        <p>x64 面向Windows 10／11 。ARM64 提供原生安装包。</p>
         <div class="download-choices">
           <a href="https://github.com/gddjag/QCam/releases/download/v1.0.1/QCam-Windows-x64-1.0.1-Setup.exe">Windows x64<span class="download-glyph" aria-hidden="true"></span></a>
           <a href="https://github.com/gddjag/QCam/releases/download/v1.0.1/QCam-Windows-arm64-1.0.1-Setup.exe">Windows ARM64<span class="download-glyph" aria-hidden="true"></span></a>
         </div>
+        <aside class="download-help" aria-label="Windows 安装说明">
+          <p class="download-notice"><span aria-hidden="true">i</span>安装包未签名。Edge 可能提示“通常不会下载”。</p>
+          <details>
+            <summary>Edge 提示“通常不会下载”？</summary>
+            <div class="download-help-content">
+              <p>Windows 安装包未进行代码签名。Edge 可能提示“通常不会下载”，首次运行时也可能显示“未知发布者”。</p>
+              <p>确认来自本页的下载链接后，可在 Edge 下载菜单选择「…」→「保留」以保存文件。运行前核对本页对应架构的 SHA-256，并用 Windows 安全中心扫描。</p>
+              <p>若 SmartScreen 仅提示应用无法识别，核验后可在提供该选项时选择「更多信息」→「仍要运行」。若校验值不符或系统检测到恶意软件，请停止安装。</p>
+              <a href="https://learn.microsoft.com/deployedge/microsoft-edge-security-smartscreen" target="_blank" rel="noopener noreferrer">Microsoft 官方说明 ↗</a>
+            </div>
+          </details>
+          <details>
+            <summary>查看 SHA-256 校验值</summary>
+            <div class="download-help-content">
+              <dl class="download-checksums">
+                <dt>Windows x64 · SHA-256</dt><dd><code>3d4e27f2f56f3fc625fc27fdbd46ceaa919e692cd16cc5b9a0d5f6cd93451678</code></dd>
+                <dt>Windows ARM64 · SHA-256</dt><dd><code>0891033c6943871308db4e68e9d26cca0e3ed48c52879f8835a1ae1d9b693fd6</code></dd>
+              </dl>
+            </div>
+          </details>
+        </aside>
       </div>
       <div class="download-platform">
         <h3>
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17.1 5.2c.9-1.1 1.6-2.6 1.4-4.2-1.3.1-2.9.9-3.8 2-.8.9-1.6 2.5-1.4 4 1.5.1 2.9-.7 3.8-1.8ZM20.6 17c-.4 1-1 2.2-1.8 3.4-1 1.4-2 2.8-3.7 2.8-1.5 0-2-.9-3.8-.9-1.7 0-2.3.9-3.8.9-1.6.1-2.8-1.5-3.8-3C1.6 17.1.1 11.4 2.3 7.7c1-1.8 2.9-2.9 5-2.9 1.6 0 3.1 1 4 1s2.8-1.2 4.6-1c.8 0 3.1.3 4.6 2.5-.1.1-2.7 1.6-2.7 4.7 0 3.7 3.2 4.9 3.3 5h-.5Z" transform="translate(1 0) scale(.96)"/></svg>
+          <svg aria-hidden="true" viewBox="-1 -1 26 26"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
           macOS
         </h3>
-        <p>macOS 版暂停发布。</p>
+        <p>敬请期待···</p>
         <div class="download-choices">
-          <button type="button" disabled aria-label="macOS Apple 芯片，M 系列，暂停发布">Apple 芯片（M 系列）<span class="download-glyph" aria-hidden="true"></span></button>
-          <button type="button" disabled aria-label="macOS Intel 芯片，暂停发布">Intel 芯片<span class="download-glyph" aria-hidden="true"></span></button>
+          <button type="button" disabled aria-label="macOS Apple 芯片，M 系列，敬请期待">Apple 芯片（M 系列）<span class="download-glyph" aria-hidden="true"></span></button>
+          <button type="button" disabled aria-label="macOS Intel 芯片，敬请期待">Intel 芯片<span class="download-glyph" aria-hidden="true"></span></button>
         </div>
       </div>
     </div>
@@ -824,6 +859,16 @@ html:has(.viewer[open]) { overflow: hidden }
   </dialog>
   <script>
     const english = {
+  "查看 SHA-256 校验值": "View SHA-256 checksums",
+
+  "Windows 安装说明": "Windows installation help",
+  "安装包未签名。Edge 可能提示“通常不会下载”。": "The installer is unsigned. Edge may warn that it is not commonly downloaded.",
+  "Edge 提示“通常不会下载”？": "Does Edge say “not commonly downloaded”?",
+  "Windows 安装包未进行代码签名。Edge 可能提示“通常不会下载”，首次运行时也可能显示“未知发布者”。": "The Windows installer is not code-signed. Edge may warn that it is not commonly downloaded, and Windows may show “Unknown publisher” on first launch.",
+  "确认来自本页的下载链接后，可在 Edge 下载菜单选择「…」→「保留」以保存文件。运行前核对本页对应架构的 SHA-256，并用 Windows 安全中心扫描。": "After confirming that the file came from a download link on this page, select “…” → “Keep” in Edge to save it. Before running it, verify the SHA-256 for your architecture below and scan the file with Windows Security.",
+  "若 SmartScreen 仅提示应用无法识别，核验后可在提供该选项时选择「更多信息」→「仍要运行」。若校验值不符或系统检测到恶意软件，请停止安装。": "If SmartScreen only reports that the app is unrecognized, after verification you can select “More info” → “Run anyway” when available. Stop installation if the checksum does not match or Windows detects malware.",
+  "Microsoft 官方说明 ↗": "Microsoft documentation ↗"
+,
   "轻映 QCam，永久免费的多路虚拟相机。一个摄像头，多种构图；了解多平台开播、真实工作台教程和平台版本。": "QCam is a free multi-output virtual camera. Explore multi-platform streaming, real workbench tutorials, and platform availability.",
   "轻映 QCam · 多路虚拟相机": "QCam · Multi-output virtual camera",
   "跳到主要内容": "Skip to content",
@@ -918,11 +963,11 @@ html:has(.viewer[open]) { overflow: hidden }
   "在 SRT 监听模式下，QCam 会重新等待推流。先确认手机和电脑所在的局域网可以互访，再从手机重新推流。改过地址或端口时，在「网络视频源」中点「应用并重新连接」。点「切回摄像头」可恢复实体设备输入。": "In SRT listener mode, QCam waits for the stream to return. Make sure the phone and computer can reach each other on the same local network, then restart the stream on the phone. If the address or port changed, open Network video source (网络视频源) and select Apply and reconnect (应用并重新连接). Select Switch to camera (切回摄像头) to return to the webcam.",
   "下载 QCam": "Download QCam",
   "Windows 版 1.0.1 · 免费下载": "Windows 1.0.1 · Free download",
-  "x64 面向 Windows 10（1809 起）和 Windows 11。ARM64 提供原生安装包，Windows 10／11 安装和直播采集待实机验证。": "The x64 build targets Windows 10 (1809 and later) and Windows 11. The native ARM64 installer is available. Installation and live capture on Windows 10 and 11 still need ARM64 hardware testing.",
-  "macOS 版暂停发布。": "The macOS release is on hold.",
-  "macOS Apple 芯片，M 系列，暂停发布": "macOS for Apple silicon (M series), release on hold",
+  "x64 面向Windows 10／11 。ARM64 提供原生安装包。": "The x64 build targets Windows 10 and 11. A native ARM64 installer is available.",
+  "敬请期待···": "Coming soon...",
+  "macOS Apple 芯片，M 系列，敬请期待": "macOS for Apple silicon (M series), coming soon",
   "Apple 芯片（M 系列）": "Apple silicon (M series)",
-  "macOS Intel 芯片，暂停发布": "macOS for Intel, release on hold",
+  "macOS Intel 芯片，敬请期待": "macOS for Intel, coming soon",
   "Intel 芯片": "Intel",
   "软件截图": "Software screenshot",
   "关闭": "Close",
