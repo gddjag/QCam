@@ -102,6 +102,10 @@ button{cursor:pointer}
 .guide-preview figcaption span:last-child{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .motion{background:#191d1c}
 .motion-layout{display:grid;grid-template-columns:minmax(0,.67fr) minmax(0,1.33fr);align-items:center;gap:clamp(22px,4.5vw,82px)}
+.motion-copy{min-width:0;container-type:inline-size}
+.motion-copy #demos-title{font-size:min(17cqi,clamp(36px,4.7vw,72px));line-height:1.2}
+#demos-title>span{display:block;white-space:nowrap}
+html:lang(en) .motion-copy #demos-title{font-size:min(11.5cqi,60px)}
 .motion-tabs{margin-block:clamp(19px,3.5vh,37px) 17px;display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .motion-tabs button{background:transparent;color:#d1d6cd;border:1px solid #62695e;border-radius:2px;padding:11px 7px;line-height:1.3;font-size:14px}
 .motion-tabs button[aria-pressed=true]{background:var(--lime);border-color:var(--lime);color:#1a2213}
@@ -738,8 +742,8 @@ html:has(.viewer[open]) { overflow: hidden }
     </section>
     <section id="demos" class="screen dark motion" aria-labelledby="demos-title">
       <div class="wrap motion-layout">
-        <div>
-          <h2 class="section-title" id="demos-title">跟着工作台，<br>一步步操作。</h2>
+        <div class="motion-copy">
+          <h2 class="section-title" id="demos-title"><span>跟着工作台，</span><span>一步步操作。</span></h2>
           <div class="motion-tabs" aria-label="选择操作演示" role="group">
             <button type="button" data-film="add" aria-pressed="true" aria-controls="film">添加通道</button>
             <button type="button" data-film="delete" aria-pressed="false" aria-controls="film">删除通道</button>
